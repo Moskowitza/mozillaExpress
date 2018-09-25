@@ -1,6 +1,8 @@
 var Author = require('../models/author');
 var async = require('async');
-var Book =require('../models/book')
+var Book =require('../models/book');
+
+
 // Display list of all Authors.
 exports.author_list = function(req, res) {
   Author.find()
