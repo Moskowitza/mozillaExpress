@@ -40,7 +40,7 @@ app.use(function(err, req, res, next) {
 });
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB='mongodb://admin:9dminpassword@ds111993.mlab.com:11993/local_library'
+var mongoDB=process.env.MONGODB_URI || 'mongodb://admin:9dminpassword@ds111993.mlab.com:11993/local_library'
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
