@@ -44,7 +44,7 @@ exports.author_create_get = function(req, res) {
 };
 
 // Handle Author create on POST.
-exports.author_create_post [
+exports.author_create_post = [
     //VALIDATE form fields
     body('first_name').isLength({min:1}).trim().withMessage('First name must be specificed.')
     .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
@@ -57,11 +57,11 @@ exports.author_create_post [
     sanitizeBody('family_name').trim().escape(),
     sanitizeBody('date_of_birth').toDate(),
     sanitizeBody('date_of_death').toDate(),
-    //Process requet after validatoin and sanitization.
+    //Process requet after validation and sanitization.
     (req,res,next)=>{
-        //extract the validatoin errors from a request
-        const errors=validationResult(req);
-        if(!errors.isEmpty()){
+        //extract the validation errors from a request
+        const errors = validationResult(req);
+                if(!errors.isEmpty()){
             //if there are errors render from again with SANITIZED values/error msgs
             res.render('author_form',{title:'Create Author', author: req.body, errors:errors.array()});
             return
